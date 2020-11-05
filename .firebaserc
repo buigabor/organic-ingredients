@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "shopingredients"
+  },
+  "targets": {
+    "shopping-for-ingredients": {
+      "hosting": {
+        "shop-for-ingredients": [
+          "shopping-for-ingredients"
+        ]
+      }
+    }
+  }
+}
