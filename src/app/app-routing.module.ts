@@ -1,3 +1,4 @@
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AdminAuthGuard } from './services/admin-auth-guard/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
@@ -19,16 +20,17 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-  {
-    path: 'order-success',
-    component: OrderSuccessComponent,
-    canActivate: [AuthGuard],
-  },
-
+  // prettier-ignore
+  { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
   { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
   {
     path: 'admin/products',
     component: AdminProductsComponent,
+    canActivate: [AuthGuard, AdminAuthGuard],
+  },
+  {
+    path: 'admin/products/new',
+    component: ProductFormComponent,
     canActivate: [AuthGuard, AdminAuthGuard],
   },
   {

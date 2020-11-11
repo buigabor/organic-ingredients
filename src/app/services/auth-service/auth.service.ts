@@ -1,15 +1,22 @@
-import { Observable } from 'rxjs';
+import { UserService } from './../user-service/user.service';
+import { Observable, of } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import { ActivatedRoute } from '@angular/router';
+import { AppUser } from 'src/app/models/app-user';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   user$: Observable<firebase.User>;
-  constructor(private afAuth: AngularFireAuth, private router: ActivatedRoute) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: ActivatedRoute,
+    private userService: UserService
+  ) {
     this.user$ = this.afAuth.authState;
     this.user$.subscribe((x) => console.log(x));
   }
@@ -22,5 +29,16 @@ export class AuthService {
   }
   logout() {
     this.afAuth.signOut();
+  }
+
+  get appUser$(): Observable<AppUser> {
+    return this.user$.pipe(
+      switchMap((user) => {
+        if (user) {
+          return this.userService.get(user.uid);
+        }
+        return of(null);
+      })
+    );
   }
 }
