@@ -16,6 +16,8 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,14 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     LoginComponent,
     ProductFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, AppFirebaseModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    AppFirebaseModule,
+    FormsModule,
+    CustomFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

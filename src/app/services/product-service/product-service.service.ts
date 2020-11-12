@@ -5,19 +5,23 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class ProductService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories() {
+  create(product) {
+    return this.db.list('/products').push(product);
+  }
+
+  getAll() {
     return this.db
-      .list('/categories', (ref) => ref.orderByChild('name'))
+      .list('/products')
       .snapshotChanges()
       .pipe(
-        map((categories) => {
-          return categories.map((categoryMetaData) => {
+        map((products) => {
+          return products.map((productsMetaData) => {
             const data = {
-              value: categoryMetaData.payload.val(),
-              ...categoryMetaData,
+              value: productsMetaData.payload.val(),
+              ...productsMetaData,
             };
             return data;
           });
