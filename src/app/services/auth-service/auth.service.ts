@@ -18,7 +18,6 @@ export class AuthService {
     private userService: UserService
   ) {
     this.user$ = this.afAuth.authState;
-    this.user$.subscribe((x) => console.log(x));
   }
 
   login() {

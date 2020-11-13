@@ -1,3 +1,4 @@
+import { AngularMaterialModule } from './angular-material.module';
 import { AppFirebaseModule } from './app-firebase.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { CustomFormsModule } from 'ng2-validation';
     AppFirebaseModule,
     FormsModule,
     CustomFormsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

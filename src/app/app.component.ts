@@ -22,7 +22,10 @@ export class AppComponent implements OnDestroy {
       if (user) {
         this.userService.save(user);
         const returnUrl = localStorage.getItem('returnUrl');
-        this.router.navigate([returnUrl]);
+        if (returnUrl) {
+          localStorage.removeItem('returnUrl');
+          this.router.navigate([returnUrl]);
+        }
       }
     });
   }

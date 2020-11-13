@@ -1,20 +1,35 @@
 <p>
   <a class="btn btn-primary" routerLink='/admin/products/new'>New Product</a>
 </p>
+<p>
+  <input #query (keyup)='filter(query.value)' type="text" class="form-control" placeholder="Search...">
+</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products$ | async">
-      <td>{{product.value.title}}</td>
-      <td>{{product.value.price}}</td>
-      <td><a [routerLink]='["/admin/products", product.key]'>Edit</a></td>
-    </tr>
-  </tbody>
-</table>
+    <!-- Title Column -->
+    <ng-container matColumnDef="value.title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='value.title'> Title </th>
+      <td mat-cell *matCellDef="let product"> {{product.value.title}} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="value.price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='value.price'> Price ($) </th>
+      <td mat-cell *matCellDef="let product"> {{product.value.price}} </td>
+    </ng-container>
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="modify">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let product">
+        <a [routerLink]='["/admin/products", product.key]'>Edit</a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
