@@ -59,13 +59,5 @@
   <!-- Bootstrap Card for product -->
 
   <div class="col-md-6">
-    <div *ngIf="title.value" class="card" style="width: 18rem;">
-      <img [src]="product.imageUrl" class="card-img-top">
-      <div class="card-body">
-        <h2 class="card-title">{{product.title}}</h2>
-        <p class="text-black-50" *ngIf="categorySelect.value">{{product.category | titlecase}}</p>
-        <p class="card-text">{{product.price | currency:'USD'}} </p>
-      </div>
-    </div>
+    <app-product-card [product]='product' [show-actions]='false'></app-product-card>
   </div>
-</div>

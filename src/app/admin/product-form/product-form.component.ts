@@ -40,7 +40,7 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(product: Product) {
+  onSubmit(product: Product): void {
     if (this.productId) {
       this.productService.update(this.productId, product);
     } else {
@@ -49,7 +49,7 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['/admin/products']);
   }
 
-  deleteProduct() {
+  deleteProduct(): void {
     if (!confirm('Are you sure you want to delete this product?')) {
       return;
     }

@@ -20,6 +20,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
