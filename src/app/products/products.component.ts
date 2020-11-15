@@ -20,9 +20,7 @@ export class ProductsComponent {
       .getAll()
       .pipe(
         switchMap((products) => {
-          this.products = products.map((products) => {
-            return products.value;
-          });
+          this.products = products;
           return this.route.queryParams;
         })
       )
