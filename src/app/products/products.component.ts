@@ -1,20 +1,26 @@
+import { ShoppingCartService } from './../services/shopping-cart/shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ProductService } from './../services/product-service/product-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit, OnDestroy {
   products = [];
   filteredProducts = [];
-  selectedCategory = null;
+  selectedCategory: string | null = null;
+  cart: any;
+  cartSubscription: Subscription;
+
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: ShoppingCartService
   ) {
     this.productService
       .getAll()
@@ -29,9 +35,22 @@ export class ProductsComponent {
 
         this.filteredProducts = this.selectedCategory
           ? this.products.filter((product) => {
-              return product.category === this.selectedCategory;
+              return product.value.category === this.selectedCategory;
             })
           : this.products;
       });
+  }
+
+  async ngOnInit() {
+    this.cartSubscription = (await this.cartService.getCart()).subscribe(
+      (cart) => {
+        this.cart = cart;
+        console.log(this.cart);
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.cartSubscription.unsubscribe();
   }
 }

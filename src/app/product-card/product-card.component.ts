@@ -7,15 +7,27 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit {
-  // tslint:disable-next-line: no-input-rename
   @Input('product') product;
-  // tslint:disable-next-line: no-input-rename
   @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart;
   constructor(private cartService: ShoppingCartService) {}
 
   ngOnInit(): void {}
 
-  addToCart(product) {
-    this.cartService.addToCart(product);
+  addToCart() {
+    this.cartService.addToCart(this.product);
+  }
+
+  getQuantity(): number {
+    if (!this.shoppingCart) {
+      return 0;
+    }
+
+    const item = this.shoppingCart.itemsMap[this.product.key];
+    return item ? item.quantity : 0;
+  }
+
+  removeFromCart() {
+    this.cartService.removeFromCart(this.product);
   }
 }
