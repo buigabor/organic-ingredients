@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { FirebaseApp } from '@angular/fire';
@@ -46,23 +45,23 @@ export class ShoppingCartService {
     return result.key;
   }
 
-  async addToCart(product) {
-    this.updateProductQuantity(product, 1);
+  async addToCart(productMap) {
+    this.updateProductQuantity(productMap, 1);
   }
 
-  async removeFromCart(product) {
-    this.updateProductQuantity(product, -1);
+  async removeFromCart(productMap) {
+    this.updateProductQuantity(productMap, -1);
   }
 
-  private async updateProductQuantity(product, change: number) {
+  private async updateProductQuantity(productMap, change: number) {
     const cartId = await this.getOrCreateCartId();
-    const item$ = this.getItem(cartId, product.key);
+    const item$ = this.getItem(cartId, productMap.key);
 
     item$.once('value', (snapshot) => {
       const productInCart = snapshot.val();
 
       snapshot.ref.update({
-        product: product.value,
+        product: productMap.value,
         quantity: (productInCart ? productInCart.quantity : 0) + change,
       });
     });

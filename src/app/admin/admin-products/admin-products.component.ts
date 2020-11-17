@@ -11,7 +11,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./admin-products.component.scss'],
 })
 export class AdminProductsComponent implements OnDestroy {
-  products: any[];
+  productsMap: any[];
   subscription: Subscription;
   displayedColumns: string[] = ['value.title', 'value.price', 'modify'];
   dataSource;
@@ -19,10 +19,12 @@ export class AdminProductsComponent implements OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private productService: ProductService) {
-    this.subscription = this.productService.getAll().subscribe((products) => {
-      this.products = products;
-      this.initializeTable(products);
-    });
+    this.subscription = this.productService
+      .getAll()
+      .subscribe((productsMap) => {
+        this.productsMap = productsMap;
+        this.initializeTable(productsMap);
+      });
   }
 
   private initializeTable(products) {
@@ -40,12 +42,12 @@ export class AdminProductsComponent implements OnDestroy {
 
   filter(query: string): void {
     const filteredProducts = query
-      ? this.products.filter((product) => {
+      ? this.productsMap.filter((product) => {
           return product.value.title
             .toLowerCase()
             .includes(query.toLowerCase());
         })
-      : this.products;
+      : this.productsMap;
 
     this.initializeTable(filteredProducts);
   }

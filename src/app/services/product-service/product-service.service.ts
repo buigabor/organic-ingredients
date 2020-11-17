@@ -1,4 +1,4 @@
-import { Product, ProductMetaData } from './../../models/product';
+import { Product } from './../../models/product';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -31,7 +31,14 @@ export class ProductService {
   }
 
   getProduct(productId) {
-    return this.db.object<Product>('/products/' + productId).valueChanges();
+    return this.db
+      .object('/products/' + productId)
+      .snapshotChanges()
+      .pipe(
+        map((product) => {
+          return { value: product.payload.val(), ...product };
+        })
+      );
   }
 
   update(productId, product) {

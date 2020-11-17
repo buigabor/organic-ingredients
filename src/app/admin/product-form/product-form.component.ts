@@ -12,13 +12,9 @@ import { take } from 'rxjs/operators';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product: Product = {
-    title: undefined,
-    price: undefined,
-    imageUrl: undefined,
-    category: undefined,
-  };
+  productMap;
   productId: string;
+  isLoading = true;
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
@@ -27,13 +23,13 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.categories$ = this.categoryService.getAll();
     this.productId = this.route.snapshot.paramMap.get('id');
-
     if (this.productId) {
       this.productService
         .getProduct(this.productId)
         .pipe(take(1))
-        .subscribe((product) => {
-          this.product = product;
+        .subscribe((productMap) => {
+          this.productMap = productMap;
+          this.isLoading = false;
         });
     }
   }

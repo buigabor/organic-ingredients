@@ -1,27 +1,18 @@
-<div *ngIf="product.value.title" class="card">
-  <img *ngIf="product.value.imageUrl" [src]="product.value.imageUrl" class="card-img-top" alt='{{product.value.title}}'>
+<div *ngIf="productMap.value.title" class="card">
+  <img *ngIf="productMap.value.imageUrl" [src]="productMap.value.imageUrl" class="card-img-top"
+    alt='{{productMap.value.title}}'>
   <div class="card-body">
-    <h2 class="card-title">{{product.value.title}}</h2>
-    <p *ngIf="!this.showActions" class="text-black-50">{{product.value.category | titlecase}}</p>
-    <p class="card-text">{{product.value.price | currency:'USD'}}
+    <h2 class="card-title">{{productMap.value.title}}</h2>
+    <p *ngIf="!this.showActions" class="text-black-50">{{productMap.value.category | titlecase}}</p>
+    <p class="card-text">{{productMap.value.price | currency:'USD'}}
     </p>
   </div>
-  <div *ngIf="this.showActions" class="card-footer">
-    <button *ngIf="this.getQuantity() === 0; else updateQuantity" (click)="addToCart()"
+  <div *ngIf="this.showActions && this.shoppingCart" class="card-footer">
+    <button *ngIf="this.shoppingCart.getQuantity(productMap) === 0; else updateQuantity" (click)="addToCart()"
       class="btn btn-secondary btn-block">
       Add to Cart</button>
     <ng-template #updateQuantity>
-      <div class="row no-gutters">
-        <div class="col-3">
-          <button class="btn btn-secondary btn-block" (click)="removeFromCart()">-</button>
-        </div>
-        <div class="col d-flex justify-content-center align-items-center text-primary">
-          {{this.getQuantity()}}
-        </div>
-        <div class="col-3">
-          <button class="btn btn-secondary btn-block" (click)="addToCart()">+</button>
-        </div>
-      </div>
+      <app-product-quantity [product]='this.productMap' [shopping-cart]='this.shoppingCart'></app-product-quantity>
     </ng-template>
 
   </div>

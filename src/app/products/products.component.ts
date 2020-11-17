@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit, OnDestroy {
-  products = [];
+  productsMap = [];
   filteredProducts = [];
   selectedCategory: string | null = null;
   cart: any;
@@ -25,8 +25,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.productService
       .getAll()
       .pipe(
-        switchMap((products) => {
-          this.products = products;
+        switchMap((productsMap) => {
+          this.productsMap = productsMap;
           return this.route.queryParams;
         })
       )
@@ -34,10 +34,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.selectedCategory = queryParam.category;
 
         this.filteredProducts = this.selectedCategory
-          ? this.products.filter((product) => {
+          ? this.productsMap.filter((product) => {
               return product.value.category === this.selectedCategory;
             })
-          : this.products;
+          : this.productsMap;
       });
   }
 
