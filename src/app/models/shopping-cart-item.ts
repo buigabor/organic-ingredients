@@ -1,8 +1,28 @@
-import { Product } from './product';
 export class ShoppingCartItem {
-  constructor(public product: Product, public quantity: number) {}
+  value: {
+    price: number;
+    title: string;
+    imageUrl: string;
+  };
+  key: string;
+  quantity: number;
+
+  // This looks extremely ugly, but I couldn't find another solution for it yet.
+  constructor(init?) {
+    this.value = {
+      price: 0,
+      title: '',
+      imageUrl: '',
+    };
+    this.key = '';
+    this.value.price = init.price;
+    this.value.title = init.title;
+    this.value.imageUrl = init.imageUrl;
+    this.key = init.key;
+    this.quantity = init.quantity;
+  }
 
   get totalPrice(): number {
-    return this.product.price * this.quantity;
+    return this.value.price * this.quantity;
   }
 }

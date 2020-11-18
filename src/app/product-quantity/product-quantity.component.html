@@ -1,11 +1,11 @@
 <div class="row no-gutters">
   <div class="col-3">
-    <button class="btn btn-secondary btn-block" (click)="removeFromCart()">-</button>
+    <button class="btn btn-secondary btn-sm btn-block" (click)="removeFromCart()">-</button>
   </div>
-  <div class="col d-flex justify-content-center align-items-center text-primary">
+  <div class="col d-flex justify-content-center align-items-center">
     {{shoppingCart.getQuantity(this.productMap)}}
   </div>
   <div class="col-3">
-    <button class="btn btn-secondary btn-block" (click)="addToCart()">+</button>
+    <button class="btn btn-secondary btn-sm btn-block" (click)="addToCart()">+</button>
   </div>
 </div>

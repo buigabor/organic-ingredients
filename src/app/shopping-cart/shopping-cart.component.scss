@@ -1,0 +1,32 @@
+table {
+  width: 70vw;
+}
+
+.clearWidth {
+  width: 5rem;
+}
+
+.thumbnailWidth {
+  width: 3rem;
+}
+
+.qtWidth {
+  width: 9rem;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+td {
+  vertical-align: middle;
+}
+
+p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
