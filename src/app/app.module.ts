@@ -17,7 +17,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
@@ -48,6 +48,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     NgbModule,
     AppFirebaseModule,
     FormsModule,
+    ReactiveFormsModule,
     CustomFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
