@@ -1,64 +1,14 @@
 <h1>Shipping</h1>
 
-
-<form [formGroup]="shippingForm" class="input">
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="nameControl">
-    <mat-error *ngIf="shippingForm.hasError('required', 'nameControl')">
-      Name is required
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Address Line</mat-label>
-    <input matInput type="text" formControlName="addressControl">
-    <mat-error *ngIf="shippingForm.hasError('required', 'addressControl')">
-      Address line is required
-    </mat-error>
-  </mat-form-field>
-
-  <div class="input__address-group">
-    <mat-form-field appearance="fill">
-      <mat-label>City</mat-label>
-      <input matInput type="text" formControlName="cityControl">
-      <mat-error *ngIf="shippingForm.hasError('required', 'cityControl')">
-        City is required
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>State</mat-label>
-      <input matInput type="text" formControlName="stateControl">
-      <mat-error *ngIf="shippingForm.hasError('required', 'stateControl')">
-        State is required
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Country</mat-label>
-      <input matInput type="text" formControlName="countryControl">
-      <mat-error *ngIf="shippingForm.hasError('required', 'countryControl')">
-        Country is required
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Zip</mat-label>
-      <input matInput type="number" formControlName="zipControl">
-      <mat-error *ngIf="shippingForm.hasError('required', 'zipControl')">
-        Zip is required
-      </mat-error>
-    </mat-form-field>
+<div *ngIf="(cart$ | async) as cart" class="row">
+  <div class="col-7">
+    <app-shipping-form [shoppingCart]='cart'></app-shipping-form>
   </div>
-  <mat-form-field appearance="fill">
-    <mat-label>Comment</mat-label>
-    <textarea formControlName="commentControl" matInput
-      placeholder="You can leave further comments in this field..."></textarea>
-  </mat-form-field>
-</form>
+  <div class="col-5">
+    <app-shopping-cart-summary [shoppingCart]='cart'></app-shopping-cart-summary>
+  </div>
+</div>
+
+
 
 <br>
-
-<button (click)="onSubmit(shippingForm.value)" [disabled]='shippingForm.invalid' class="btn btn-primary">Place
-  Order</button>

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { FirebaseApp } from '@angular/fire';
 import { ShoppingCart } from 'src/app/models/shopping-cart';
 import { map } from 'rxjs/operators';
-import { ShoppingCartItem } from 'src/app/models/shopping-cart-item';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -26,6 +25,14 @@ export class ShoppingCartService {
       .remove();
   }
 
+  async clearCart() {
+    const cartId = await this.getOrCreateCartId();
+    this.firebase
+      .database()
+      .ref('/shopping-carts/' + cartId + '/items')
+      .remove();
+  }
+
   async getCart(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateCartId();
     return this.db
@@ -42,7 +49,7 @@ export class ShoppingCartService {
     this.updateProduct(productMap, 1);
   }
 
-  async removeFromCart(productMap) {
+  async subtractQuantity(productMap) {
     this.updateProduct(productMap, -1);
   }
 

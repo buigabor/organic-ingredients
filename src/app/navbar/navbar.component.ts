@@ -3,7 +3,6 @@ import { ShoppingCartService } from './../services/shopping-cart/shopping-cart.s
 import { AppUser } from './../models/app-user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth-service/auth.service';
-import { ShoppingCartItem } from '../models/shopping-cart-item';
 import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({

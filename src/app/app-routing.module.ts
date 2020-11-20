@@ -21,7 +21,7 @@ const routes: Routes = [
 
   { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
   // prettier-ignore
-  { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
+  { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard]},
   { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
   {
     path: 'admin/products/new',
