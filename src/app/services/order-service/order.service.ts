@@ -11,6 +11,10 @@ export class OrderService {
     private cartService: ShoppingCartService
   ) {}
 
+  getOrders() {
+    return this.db.list('/orders').snapshotChanges();
+  }
+
   placeOrder(order) {
     const result = this.db.list('/orders').push(order);
     this.cartService.clearCart();
