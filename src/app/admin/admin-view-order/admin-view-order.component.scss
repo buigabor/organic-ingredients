@@ -1,0 +1,48 @@
+.card {
+  width: 45%;
+}
+
+.card-header {
+  text-align: center;
+  background-color: #f4f4f2;
+  color: black;
+  font-size: 1.3rem;
+}
+
+.card-body {
+  color: black;
+  &__wrapper {
+    padding: 0 2.5rem;
+  }
+  &__text {
+    display: flex;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__label {
+    font-weight: 600;
+    width: 50%;
+    text-align: left;
+  }
+  &__value {
+    width: 50%;
+    text-align: right;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: flex-end;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    margin-left: auto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: right;
+  }
+}

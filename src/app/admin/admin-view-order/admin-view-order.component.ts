@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+import { OrderService } from './../../services/order-service/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,8 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminViewOrderComponent implements OnInit {
   orderId: string;
-  constructor(private route: ActivatedRoute) {
+  orderSubscription: Subscription;
+  order;
+
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService
+  ) {
     this.orderId = this.route.snapshot.paramMap.get('id');
+    this.orderSubscription = this.orderService
+      .getOrder(this.orderId)
+      .subscribe((order) => {
+        this.order = order;
+        console.log(order);
+      });
     console.log(this.orderId);
   }
 

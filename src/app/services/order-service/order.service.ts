@@ -1,6 +1,7 @@
 import { ShoppingCartService } from './../shopping-cart/shopping-cart.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,10 @@ export class OrderService {
 
   getOrders() {
     return this.db.list('/orders').snapshotChanges();
+  }
+
+  getOrder(orderId) {
+    return this.db.object('/orders/' + orderId).valueChanges();
   }
 
   placeOrder(order) {
