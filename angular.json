@@ -17,7 +17,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["ng2-validation", "lodash"],
+            "allowedCommonJsDependencies": [
+              "ng2-validation",
+              "babel-runtime/helpers/extends",
+              "babel-runtime/helpers/slicedToArray",
+              "babel-runtime/helpers/createClass",
+              "babel-runtime/core-js/get-iterator"
+            ],
             "outputPath": "dist/shop-for-ingredients",
             "index": "src/index.html",
             "main": "src/main.ts",
