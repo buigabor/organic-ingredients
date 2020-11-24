@@ -4,6 +4,7 @@ export class Order {
   datePlaced: number;
   items: any[];
   cartTotalPrice: number;
+  itemsTotalQuantity = 0;
 
   constructor(
     public userId: any,
@@ -23,5 +24,8 @@ export class Order {
         totalPrice: item.totalPrice,
       };
     });
+    for (const item of this.items) {
+      this.itemsTotalQuantity += item.quantity;
+    }
   }
 }

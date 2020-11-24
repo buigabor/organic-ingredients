@@ -1,1 +1,29 @@
-<p>my-orders works!</p>
+<div class="container">
+
+  <div *ngFor="let order of orders" class="card">
+    <div class="card-body">
+      <div class="card-body__row">
+        <div *ngFor="let item of order.items, let i = index">
+          <img *ngIf="i<=2" [src]="item.product.imageUrl" alt="" class="thumbnail">
+        </div>
+        <div *ngIf="order.items.length>3" class="card-body__empty">
+          <p class="card-body__empty-cell">+{{order.items.length - 3}}</p>
+        </div>
+      </div>
+      <div class="card-body__row">
+        <p class="card-text__label">Status:</p>
+        <p class="card-text__value">Dispatched</p>
+      </div>
+      <div class="card-body__row">
+        <p class="card-text__label">Order date:</p>
+        <p class="card-text__value">{{order.datePlaced | date}}</p>
+      </div>
+
+      <div class="card-body__row">
+        <p class="card-text__label">Total Cost:</p>
+        <p class="card-text__value">{{order.cartTotalPrice | currency:'USD'}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

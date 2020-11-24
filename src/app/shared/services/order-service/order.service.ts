@@ -15,6 +15,12 @@ export class OrderService {
     return this.db.list('/orders').snapshotChanges();
   }
 
+  getOrdersByUser(userId) {
+    return this.db
+      .list('/orders', (ref) => ref.orderByChild('userId').equalTo(userId))
+      .valueChanges();
+  }
+
   getOrder(orderId) {
     return this.db.object('/orders/' + orderId).valueChanges();
   }

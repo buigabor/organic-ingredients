@@ -18,7 +18,8 @@ table {
   width: 60px;
   height: 60px;
   border-radius: 100%;
-  background-size: cover;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 td {

@@ -2,6 +2,10 @@ ul {
   font-size: 1rem;
 }
 
+li {
+  font-weight: 500;
+}
+
 .fa-shopping-cart {
   color: white;
 }
@@ -17,4 +21,8 @@ ul {
   vertical-align: top;
   margin-top: -4px;
   margin-left: -6px;
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
 }
