@@ -45,6 +45,11 @@ import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.c
         component: MyOrdersComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'my/orders/:id',
+        component: ViewMyOrderComponent,
+        canActivate: [AuthGuard],
+      },
     ]),
   ],
 })

@@ -6,9 +6,10 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { AngularMaterialModule } from 'app/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
-  declarations: [ProductCardComponent, ProductQuantityComponent],
+  declarations: [ProductCardComponent, ProductQuantityComponent, OrderCardComponent],
   imports: [
     CommonModule,
     FormsModule,

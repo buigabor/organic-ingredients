@@ -26,7 +26,6 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
       )
       .subscribe((orders) => {
         this.orders = orders;
-        console.log(this.orders);
       });
   }
 
