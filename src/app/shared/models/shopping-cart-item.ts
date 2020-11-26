@@ -7,7 +7,7 @@ export class ShoppingCartItem {
   key: string;
   quantity: number;
 
-  // This looks extremely ugly, but I couldn't find another solution for it yet.
+  // This looks extremely ugly, but I couldn't find another solution yet.
   constructor(init?) {
     this.value = {
       price: 0,

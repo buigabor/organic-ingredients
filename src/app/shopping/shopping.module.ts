@@ -11,7 +11,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { MyOrderComponent } from './components/my-order/my-order.component';
 import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.c
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    MyOrderComponent,
     ViewMyOrderComponent,
   ],
   imports: [
