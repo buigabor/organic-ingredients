@@ -1,0 +1,37 @@
+$primary-color: #89c74a;
+
+.card-img-top {
+  width: 100%;
+  height: 14vw;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.card {
+  margin-bottom: 30px;
+  height: 30rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #1a1a1a;
+  text-transform: none;
+  letter-spacing: 0.2px;
+}
+
+.btn {
+  width: 100%;
+
+  color: white;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.7px 1.7px 2.5px;
+  &-track {
+    background-color: $primary-color;
+  }
+  &-review {
+    background-color: white;
+    color: $primary-color;
+  }
+}

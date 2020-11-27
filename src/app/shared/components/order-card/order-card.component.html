@@ -1,1 +1,12 @@
-<p>order-card works!</p>
+<div class="card">
+  <img class="card-img-top" [src]="item.product.imageUrl" alt="Card image cap">
+  <div class="card-body">
+    <h2 class="card-title">{{item.product.title}}</h2>
+    <p class="card-text">Quantity: {{item.quantity}}</p>
+    <p class="card-text">Cost: {{item.totalPrice | currency:'USD'}}</p>
+    <p class="card-text">Status: Dispatched</p>
+
+    <a class="btn btn-track">Track Order</a>
+    <a class="btn btn-review">Write Review</a>
+  </div>
+</div>

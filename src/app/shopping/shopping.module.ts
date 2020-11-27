@@ -1,3 +1,4 @@
+import { AdminViewOrderComponent } from './../shared/components/view-order/admin-view-order.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard/auth-guard.service';
@@ -11,7 +12,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.c
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    ViewMyOrderComponent,
   ],
   imports: [
     SharedModule,
@@ -47,7 +46,7 @@ import { ViewMyOrderComponent } from './components/view-my-order/view-my-order.c
       },
       {
         path: 'my/orders/:id',
-        component: ViewMyOrderComponent,
+        component: AdminViewOrderComponent,
         canActivate: [AuthGuard],
       },
     ]),

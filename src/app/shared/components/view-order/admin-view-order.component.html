@@ -1,0 +1,80 @@
+<h1>Order Details</h1>
+<hr>
+<br>
+<div class="row" *ngIf="this.order">
+  <ng-container *ngFor="let item of order.items; let i = index">
+    <div class="col-3">
+      <app-order-card [item]='item'></app-order-card>
+    </div>
+    <div class="w-100" *ngIf="(i+1) % 4 === 0"></div>
+  </ng-container>
+</div>
+
+<br>
+<h1>Order Summary</h1>
+<hr>
+<br>
+<div class="container">
+  <!-- Order details -->
+
+  <div *ngIf="this.order" class="card text-white  mb-3">
+    <div class="card-header">Order Details</div>
+    <div class="card-body">
+
+      <div class="card-body__wrapper">
+        <div class="card-body__text">
+          <span class="card-body__label">Order Date:</span>
+          <span class="card-body__value">{{this.order.datePlaced | date}}</span>
+        </div>
+
+        <div class="card-body__text">
+          <span class="card-body__label">Ordered Items:</span>
+          <ul class="card-body__list">
+            <li *ngFor="let item of order.items">
+              {{item.product.title}} x {{item.quantity}}
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-body__text">
+          <span class="card-body__label">Total Cost:</span>
+          <span class="card-body__value">{{this.order.cartTotalPrice |currency:'USD'}}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <!-- Shipping details -->
+
+  <div *ngIf="this.order" class="card text-white  mb-3">
+    <div class="card-header">Shipping Details</div>
+
+    <div class="card-body">
+      <div class="card-body__wrapper">
+        <div class="card-body__text">
+          <span class="card-body__label">Name:</span>
+          <span class="card-body__value">{{this.order.shippingDetails.nameControl}}</span>
+        </div>
+
+        <div class="card-body__text">
+          <span class="card-body__label">Address:</span>
+          <div class="card-body__value-container">
+            <span class="card-body__value">{{this.order.shippingDetails.addressControl}}</span>
+            <span class="card-body__value">{{this.order.shippingDetails.zipControl}}</span>
+            <span class="card-body__value">{{this.order.shippingDetails.cityControl}}</span>
+            <span class="card-body__value">{{this.order.shippingDetails.stateControl}}</span>
+            <span class="card-body__value">{{this.order.shippingDetails.countryControl}}</span>
+          </div>
+        </div>
+
+        <div class="card-body__text">
+          <span class="card-body__label">Comment:</span>
+          <span class="card-body__value">{{this.order.shippingDetails.commentControl}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

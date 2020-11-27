@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AdminViewOrderComponent } from 'shared/components/view-order/admin-view-order.component';
 import { AuthGuard } from 'shared/services/auth-guard/auth-guard.service';
 
 import { SharedModule } from './../shared/shared.module';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
-import { AdminViewOrderComponent } from './components/admin-view-order/admin-view-order.component';
+
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { AdminAuthGuard } from './services/admin-auth-guard/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
-    AdminViewOrderComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,

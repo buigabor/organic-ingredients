@@ -1,3 +1,4 @@
+import { AdminViewOrderComponent } from './components/view-order/admin-view-order.component';
 import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 
 @NgModule({
-  declarations: [ProductCardComponent, ProductQuantityComponent, OrderCardComponent],
+  declarations: [
+    ProductCardComponent,
+    ProductQuantityComponent,
+    OrderCardComponent,
+    AdminViewOrderComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +27,7 @@ import { OrderCardComponent } from './components/order-card/order-card.component
   exports: [
     ProductCardComponent,
     ProductQuantityComponent,
+    AdminViewOrderComponent,
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
