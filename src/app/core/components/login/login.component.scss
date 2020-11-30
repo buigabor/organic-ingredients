@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+.form-wrap {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.btn {
+  width: 10rem;
+}
+
+label {
+  font-weight: 600;
+}
+.register {
+  &-text {
+    font-size: 0.8rem;
+  }
+
+  &-link {
+    color: #0061ff;
+    text-decoration: none;
+  }
+}

@@ -12,4 +12,8 @@ export class LoginComponent {
   login(): void {
     this.authService.login();
   }
+
+  onSubmit(form) {
+    console.log(form);
+  }
 }

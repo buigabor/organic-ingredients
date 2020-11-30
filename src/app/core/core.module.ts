@@ -6,9 +6,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
-  declarations: [NavbarComponent, HomeComponent, LoginComponent],
+  declarations: [NavbarComponent, HomeComponent, LoginComponent, RegisterComponent],
   imports: [SharedModule, RouterModule.forChild([]), NgbModule],
   exports: [NavbarComponent],
 })

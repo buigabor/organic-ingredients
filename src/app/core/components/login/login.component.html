@@ -1,1 +1,28 @@
-<button (click)="login()" type="button" class="btn btn-outline-primary">Login with Google</button>
+<div class="container">
+  <div class="col-6 form-wrap">
+    <!-- ERROR MESSAGE START -->
+    <!-- ERROR MESSAGE END -->
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" class="form-control" ngModel name="email" required email />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" ngModel name="password" minlength="6" required />
+      </div>
+
+      <button class="btn btn-primary">Log In</button>
+      <br>
+      <br>
+      <span class="register-text">Don't have an account yet? <a routerLink='/register' class="register-link">Register
+          here!</a></span>
+
+    </form>
+  </div>
+
+  <!-- Google Login -->
+
+  <button (click)="login()" type="button" class="btn btn-outline-primary btn-login">Login with Google</button>
+</div>
