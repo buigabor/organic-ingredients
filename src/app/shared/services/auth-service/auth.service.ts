@@ -27,6 +27,39 @@ export class AuthService {
     localStorage.setItem('returnUrl', returnUrl);
     this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
+
+  loginStandard(value) {
+    const returnUrl =
+      this.router.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+
+    return new Promise<any>((resolve, reject) => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(value.email, value.password)
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (err) => reject(err)
+        );
+    });
+  }
+
+  register(value) {
+    const returnUrl =
+      this.router.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(value.email, value.password)
+      .then((result) => {
+        result.user.updateProfile({
+          displayName: value.firstName + ' ' + value.lastName,
+        });
+      });
+  }
+
   logout() {
     this.afAuth.signOut();
   }

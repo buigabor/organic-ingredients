@@ -1,4 +1,4 @@
-.example-radio-button {
+.radio-button {
   margin-left: 7px;
 }
 .container {
@@ -31,4 +31,13 @@ mat-error {
 
 mat-form-field {
   margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  width: 10rem;
+}
+
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
 }

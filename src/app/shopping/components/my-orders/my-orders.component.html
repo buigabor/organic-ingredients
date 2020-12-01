@@ -1,5 +1,5 @@
 <div class="container">
-
+  <h1 *ngIf="this.orders.length === 0">You don't have previous orders yet.</h1>
   <div *ngFor="let order of orders" [routerLink]='["/my/orders", order.key]' class="card">
     <div class="card-body">
       <div class="card-body__row">

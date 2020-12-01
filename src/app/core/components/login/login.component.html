@@ -13,7 +13,7 @@
         <input type="password" id="password" class="form-control" ngModel name="password" minlength="6" required />
       </div>
 
-      <button class="btn btn-primary">Log In</button>
+      <button (click)='loginStandard(form)' class="btn btn-primary">Log In</button>
       <br>
       <br>
       <span class="register-text">Don't have an account yet? <a routerLink='/register' class="register-link">Register

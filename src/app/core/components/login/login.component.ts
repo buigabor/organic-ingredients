@@ -13,7 +13,9 @@ export class LoginComponent {
     this.authService.login();
   }
 
-  onSubmit(form) {
-    console.log(form);
+  loginStandard(form): void {
+    this.authService.loginStandard(form.value);
   }
+
+  onSubmit(form) {}
 }

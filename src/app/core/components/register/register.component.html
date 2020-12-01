@@ -6,51 +6,70 @@
           <mat-label>First Name</mat-label>
           <input matInput #firstName ngModel name="firstName" required>
           <mat-error *ngIf="firstName.required">
-            Name is required
+            First name is required
           </mat-error>
         </mat-form-field>
 
 
         <mat-form-field appearance="fill" class="width-50 ml-2">
           <mat-label>Last Name</mat-label>
-          <input matInput ngModel name="lastName" required>
+          <input matInput #lastName ngModel name="lastName" required>
+          <mat-error *ngIf="lastName.required">
+            Last name is required
+          </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>Email address</mat-label>
-          <input matInput ngModel name="email" required email placeholder="Ex. pat@example.com">
+          <input matInput #email ngModel name="email" required email placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="email.required">
+            Email is required
+          </mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill" class="width-100">
           <mat-label>Enter password</mat-label>
-          <input matInput ngModel name="password" required password minlength=6 [type]="hide ? 'password' : 'text'">
+          <input matInput #password ngModel name="password" required password minlength=6
+            [type]="hide ? 'password' : 'text'">
+          <mat-error *ngIf="password.required">
+            Password is required
+          </mat-error>
           <button class="hide-button" mat-icon-button matSuffix (click)="hide = !hide"
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
         <br>
-        <label id="example-radio-group-label">Gender: </label>
+        <label>Gender: </label>
         <br>
-        <mat-radio-group ngModel name="gender" aria-label="Select an option">
+        <mat-radio-group #gender ngModel name="gender" required aria-label="Select an option">
           <mat-radio-button value="Male">Male</mat-radio-button>
-          <mat-radio-button class="example-radio-button" value="Female">Female</mat-radio-button>
+          <mat-radio-button class="radio-button" value="Female">Female</mat-radio-button>
         </mat-radio-group>
+        <mat-error *ngIf="gender.required">
+          Gender is required
+        </mat-error>
         <br><br>
-        <label id="example-radio-group-label">Date of birth: </label>
+        <label>Date of birth: </label>
         <br>
 
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
-          <input ngModel name="birthdate" matInput [matDatepicker]="picker">
+          <input ngModel #birthdate name="birthdate" required matInput [min]="minDate" [max]="maxDate"
+            [matDatepicker]="picker">
+          <mat-error *ngIf="birthdate.required">
+            Birthdate is required
+          </mat-error>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <br>
 
+        <button [disabled]='form.invalid && form.touched' type="submit" class="btn btn-primary">Register</button>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
   <br>
 
-  <button class="btn btn-primary">Register</button>
+
 </form>
