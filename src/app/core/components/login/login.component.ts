@@ -8,13 +8,20 @@ import { AuthService } from 'shared/services/auth-service/auth.service';
 })
 export class LoginComponent {
   constructor(private authService: AuthService) {}
+  error: String;
+  loginWithGoogle(): void {
+    this.authService.loginWithGoogle();
+  }
 
-  login(): void {
-    this.authService.login();
+  loginWithFacebook(): void {
+    this.authService.loginWithFacebook();
   }
 
   loginStandard(form): void {
-    this.authService.loginStandard(form.value);
+    this.authService
+      .loginStandard(form.value)
+      .then((result) => console.log(result))
+      .catch((error) => (this.error = error));
   }
 
   onSubmit(form) {}

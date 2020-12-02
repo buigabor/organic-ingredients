@@ -1,28 +1,59 @@
 <div class="container">
-  <div class="col-6 form-wrap">
-    <!-- ERROR MESSAGE START -->
-    <!-- ERROR MESSAGE END -->
-    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" class="form-control" ngModel name="email" required email />
-      </div>
+  <mat-card>
+    <mat-card-title>Sign In</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Email" type="email" id="email" class="form-control" ngModel name="email"
+              required email>
+          </mat-form-field>
+        </p>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" ngModel name="password" minlength="6" required />
-      </div>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Password" type="password" id="password" class="form-control" ngModel
+              name="password" minlength="6" required>
+          </mat-form-field>
+        </p>
 
-      <button (click)='loginStandard(form)' class="btn btn-primary">Log In</button>
-      <br>
-      <br>
-      <span class="register-text">Don't have an account yet? <a routerLink='/register' class="register-link">Register
-          here!</a></span>
+        <p *ngIf="error" class="error">
+          {{ error }}
+        </p>
 
-    </form>
-  </div>
+        <div class="button">
+          <button type="submit" (click)='loginStandard(form)' mat-button>Login</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <span class="register-text">Don't have an account yet? <a routerLink='/register' class="register-link">Register
+      here!</a></span>
 
   <!-- Google Login -->
+  <button (click)="loginWithGoogle()" type="button" class="btn btn-outline-primary socialMedia-button">
+    <div class="socialMedia-button__wrap">
+      <div class="socialMedia-button__icon-wrap">
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyIgdmlld0JveD0iMCAwIDE4IDE4IiB2ZXJzaW9uPSIxLjEiPgogIDxnIGlkPSJHb29nbGUtQnV0dG9uIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGQ9Ik0xNy42NCw5LjIwNDU0NTQ1IEMxNy42NCw4LjU2NjM2MzY0IDE3LjU4MjcyNzMsNy45NTI3MjcyNyAxNy40NzYzNjM2LDcuMzYzNjM2MzYgTDksNy4zNjM2MzYzNiBMOSwxMC44NDUgTDEzLjg0MzYzNjQsMTAuODQ1IEMxMy42MzUsMTEuOTcgMTMuMDAwOTA5MSwxMi45MjMxODE4IDEyLjA0NzcyNzMsMTMuNTYxMzYzNiBMMTIuMDQ3NzI3MywxNS44MTk1NDU1IEwxNC45NTYzNjM2LDE1LjgxOTU0NTUgQzE2LjY1ODE4MTgsMTQuMjUyNzI3MyAxNy42NCwxMS45NDU0NTQ1IDE3LjY0LDkuMjA0NTQ1NDUgTDE3LjY0LDkuMjA0NTQ1NDUgWiIgZmlsbD0iIzQyODVGNCIvPgogICAgPHBhdGggZD0iTTksMTggQzExLjQzLDE4IDEzLjQ2NzI3MjcsMTcuMTk0MDkwOSAxNC45NTYzNjM2LDE1LjgxOTU0NTUgTDEyLjA0NzcyNzMsMTMuNTYxMzYzNiBDMTEuMjQxODE4MiwxNC4xMDEzNjM2IDEwLjIxMDkwOTEsMTQuNDIwNDU0NSA5LDE0LjQyMDQ1NDUgQzYuNjU1OTA5MDksMTQuNDIwNDU0NSA0LjY3MTgxODE4LDEyLjgzNzI3MjcgMy45NjQwOTA5MSwxMC43MSBMMC45NTcyNzI3MjcsMTAuNzEgTDAuOTU3MjcyNzI3LDEzLjA0MTgxODIgQzIuNDM4MTgxODIsMTUuOTgzMTgxOCA1LjQ4MTgxODE4LDE4IDksMTggTDksMTggWiIgZmlsbD0iIzM0QTg1MyIvPgogICAgPHBhdGggZD0iTTMuOTY0MDkwOTEsMTAuNzEgQzMuNzg0MDkwOTEsMTAuMTcgMy42ODE4MTgxOCw5LjU5MzE4MTgyIDMuNjgxODE4MTgsOSBDMy42ODE4MTgxOCw4LjQwNjgxODE4IDMuNzg0MDkwOTEsNy44MyAzLjk2NDA5MDkxLDcuMjkgTDMuOTY0MDkwOTEsNC45NTgxODE4MiBMMC45NTcyNzI3MjcsNC45NTgxODE4MiBDMC4zNDc3MjcyNzMsNi4xNzMxODE4MiAwLDcuNTQ3NzI3MjcgMCw5IEMwLDEwLjQ1MjI3MjcgMC4zNDc3MjcyNzMsMTEuODI2ODE4MiAwLjk1NzI3MjcyNywxMy4wNDE4MTgyIEwzLjk2NDA5MDkxLDEwLjcxIEwzLjk2NDA5MDkxLDEwLjcxIFoiIGZpbGw9IiNGQkJDMDUiLz4KICAgIDxwYXRoIGQ9Ik05LDMuNTc5NTQ1NDUgQzEwLjMyMTM2MzYsMy41Nzk1NDU0NSAxMS41MDc3MjczLDQuMDMzNjM2MzYgMTIuNDQwNDU0NSw0LjkyNTQ1NDU1IEwxNS4wMjE4MTgyLDIuMzQ0MDkwOTEgQzEzLjQ2MzE4MTgsMC44OTE4MTgxODIgMTEuNDI1OTA5MSwwIDksMCBDNS40ODE4MTgxOCwwIDIuNDM4MTgxODIsMi4wMTY4MTgxOCAwLjk1NzI3MjcyNyw0Ljk1ODE4MTgyIEwzLjk2NDA5MDkxLDcuMjkgQzQuNjcxODE4MTgsNS4xNjI3MjcyNyA2LjY1NTkwOTA5LDMuNTc5NTQ1NDUgOSwzLjU3OTU0NTQ1IEw5LDMuNTc5NTQ1NDUgWiIgZmlsbD0iI0VBNDMzNSIvPgogIDwvZz4KPC9zdmc+"
+          class="socialMedia-button__icon" alt="" role="presentation">
+      </div>
+      <span>Login with Google</span>
+    </div>
+  </button>
 
-  <button (click)="login()" type="button" class="btn btn-outline-primary btn-login">Login with Google</button>
+  <!-- Facebook Login -->
+
+  <button (click)="loginWithFacebook()" type="button" class="btn btn-outline-primary socialMedia-button">
+    <div class="socialMedia-button__wrap">
+      <div class="socialMedia-button__icon-wrap">
+        <img
+          src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OCA1OCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiM0MjY3YjI7fS5jbHMtMntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5mLW9nb19SR0JfSEVYLTU4PC90aXRsZT48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01NC44LDBIMy4yQTMuMiwzLjIsMCwwLDAsMCwzLjJWNTQuOEEzLjIsMy4yLDAsMCwwLDMuMiw1OEgzMVYzNS41N0gyMy40NVYyNi43OUgzMVYyMC4zM2MwLTcuNDksNC41OC0xMS41NywxMS4yNi0xMS41N0E2NC4yLDY0LjIsMCwwLDEsNDksOS4xdjcuODNoLTQuNmMtMy42NCwwLTQuMzUsMS43Mi00LjM1LDQuMjZ2NS41OWg4LjdsLTEuMTMsOC43OEg0MFY1OEg1NC44QTMuMiwzLjIsMCwwLDAsNTgsNTQuOFYzLjJBMy4yLDMuMiwwLDAsMCw1NC44LDBaIi8+PHBhdGggaWQ9ImYiIGNsYXNzPSJjbHMtMiIgZD0iTTQwLDU4VjM1LjU3aDcuNTdsMS4xMy04Ljc4SDQwVjIxLjJjMC0yLjU0LjcxLTQuMjYsNC4zNS00LjI2SDQ5VjkuMWE2NC4yLDY0LjIsMCwwLDAtNi43NS0uMzRDMzUuNTYsOC43NiwzMSwxMi44NCwzMSwyMC4zM3Y2LjQ2SDIzLjQ1djguNzhIMzFWNThaIi8+PC9zdmc+"
+          class="socialMedia-button__icon" alt="" role="presentation">
+      </div>
+      <span>Login with Facebook</span>
+    </div>
+  </button>
 </div>

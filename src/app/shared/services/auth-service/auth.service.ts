@@ -21,11 +21,19 @@ export class AuthService {
     this.user$ = this.afAuth.authState;
   }
 
-  login() {
+  loginWithGoogle() {
     const returnUrl =
       this.router.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
     this.afAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  }
+
+  loginWithFacebook() {
+    const returnUrl =
+      this.router.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+    const provider = new firebase.auth.FacebookAuthProvider();
+    this.afAuth.signInWithPopup(provider);
   }
 
   loginStandard(value) {

@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "shopingredients"
+    "default": "shopingredients",
+    "organic-ingredients": "shopping-for-ingredients"
   },
   "targets": {
     "shopping-for-ingredients": {

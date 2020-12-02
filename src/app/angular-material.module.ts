@@ -10,6 +10,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -25,6 +27,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatRadioModule,
     MatGridListModule,
     MatDatepickerModule,
+    MatCardModule,
+    MatButtonModule,
   ],
 })
 export class AngularMaterialModule {}
