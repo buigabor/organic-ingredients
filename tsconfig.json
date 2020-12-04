@@ -5,7 +5,8 @@
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "paths": {
-        "shared/*":["app/shared/*"]},
+      "shared/*": ["app/shared/*"]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -14,10 +15,8 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-
+    "lib": ["es2018", "dom"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

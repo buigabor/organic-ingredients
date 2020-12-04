@@ -18,7 +18,7 @@ export class ShoppingCartService {
       .ref('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  async clearProductFromCart(productMap) {
+  async removeProductFromCart(productMap) {
     const cartId = await this.getOrCreateCartId();
     this.firebase
       .database()
@@ -54,7 +54,7 @@ export class ShoppingCartService {
     this.updateProduct(productMap, -1);
   }
 
-  private async updateProduct(productMap, change: number) {
+  async updateProduct(productMap, change: number) {
     const cartId = await this.getOrCreateCartId();
     const item$ = this.getItem(cartId, productMap.key);
 

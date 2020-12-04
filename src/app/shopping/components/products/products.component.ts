@@ -1,3 +1,4 @@
+import { AlanAiService } from './../../../shared/services/alan-ai.service';
 import { ShoppingCartService } from 'shared/services/shopping-cart/shopping-cart.service';
 import { switchMap } from 'rxjs/operators';
 import { ProductService } from 'shared/services/product-service/product-service.service';
@@ -18,8 +19,19 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    private alanAiService: AlanAiService
   ) {}
+
+  async test() {
+    const cart = await this.cartService.getCart();
+    cart.subscribe((cart) => {
+      console.log(cart);
+      if (cart.items.length === 0) {
+        console.log('No items in cart you dummy');
+      }
+    });
+  }
 
   async ngOnInit() {
     this.cart$ = await this.cartService.getCart();

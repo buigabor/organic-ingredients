@@ -22,7 +22,8 @@
               "babel-runtime/helpers/extends",
               "babel-runtime/helpers/slicedToArray",
               "babel-runtime/helpers/createClass",
-              "babel-runtime/core-js/get-iterator"
+              "babel-runtime/core-js/get-iterator",
+              "@alan-ai/alan-sdk-web"
             ],
             "outputPath": "dist/shop-for-ingredients",
             "index": "src/index.html",

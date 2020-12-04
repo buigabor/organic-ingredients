@@ -1,7 +1,9 @@
+import * as env from '../../env.json';
+
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: 'AIzaSyC6uXiS6gyMigmMRKMFBtL_qP_T43J4wzg',
+    apiKey: `${env.FIREBASE_API_KEY}`,
     authDomain: 'shopping-for-ingredients.firebaseapp.com',
     databaseURL: 'https://shopping-for-ingredients.firebaseio.com',
     projectId: 'shopping-for-ingredients',

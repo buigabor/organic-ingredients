@@ -53,6 +53,7 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(product: Product): void {
+    product.title = this.transformToTitleCase(product.title);
     if (this.productId) {
       this.productService.update(this.productId, product);
     } else {
@@ -67,5 +68,14 @@ export class ProductFormComponent implements OnInit {
     }
     this.productService.delete(this.productId);
     this.router.navigate(['/admin/products']);
+  }
+
+  private transformToTitleCase(title) {
+    const titleCase = title.toLowerCase().split(' ');
+    for (let i = 0; i < titleCase.length; i++) {
+      titleCase[i] =
+        titleCase[i].charAt(0).toUpperCase() + titleCase[i].substring(1);
+    }
+    return titleCase.join(' ');
   }
 }

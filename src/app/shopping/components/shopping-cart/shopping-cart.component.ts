@@ -17,6 +17,6 @@ export class ShoppingCartComponent {
   }
 
   clearCart(productMap) {
-    this.cartService.clearProductFromCart(productMap);
+    this.cartService.removeProductFromCart(productMap);
   }
 }

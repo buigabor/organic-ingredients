@@ -1,4 +1,4 @@
-import { Product } from 'shared/models/product';
+import firebase from 'firebase/app';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
@@ -28,6 +28,23 @@ export class ProductService {
           });
         })
       );
+  }
+
+  getProductByTitle(productName) {
+    let productKey;
+    firebase
+      .database()
+      .ref('/products')
+      .orderByChild('title')
+      .equalTo(productName)
+      .on('value', (result) => {
+        let productMap = result.val();
+        for (const key in productMap) {
+          productKey = key;
+        }
+      });
+
+    return this.getProduct(productKey);
   }
 
   getProduct(productId) {
