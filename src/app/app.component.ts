@@ -58,7 +58,6 @@ export class AppComponent implements OnDestroy {
         if (commandData.command === 'open-cart') {
           this.alanAiBtnInstance.playText('Going to cart');
           this.alanAiService.goToCart();
-          this.alanAiBtnInstance.deactivate();
         }
 
         if (commandData.command === 'add-item') {
@@ -90,12 +89,10 @@ export class AppComponent implements OnDestroy {
             cart.subscribe((shoppingCart) => {
               if (shoppingCart.items.length === 0) {
                 this.alanAiBtnInstance.playText(`Your cart is empty`);
-                this.alanAiBtnInstance.deactivate();
                 return;
               }
               this.alanAiBtnInstance.playText(`Checking out`);
               this.alanAiService.checkout();
-              this.alanAiBtnInstance.deactivate();
             });
           });
         }
