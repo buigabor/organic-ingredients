@@ -29,12 +29,12 @@ export class AdminOrdersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {}
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  private initializeTable(ordersMap) {
+  private initializeTable(ordersMap): void {
     // date format params
     const options = {
       weekday: 'long',
