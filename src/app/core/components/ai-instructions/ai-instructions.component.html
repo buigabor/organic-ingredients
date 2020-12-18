@@ -1,0 +1,36 @@
+<div class="nav">
+  <h2 mat-dialog-title>Voice Control Commands</h2>
+</div>
+<div class="dialog-wrapper">
+  <mat-dialog-content class="text">
+    <table>
+      <tr>
+        <th>To Do This</th>
+        <th>Say This</th>
+      </tr>
+      <tr>
+        <td>Add Item</td>
+        <td>Add \itemName\ to cart</td>
+      </tr>
+      <tr>
+        <td>Remove Item</td>
+        <td>Remove \itemName\ from cart</td>
+      </tr>
+      <tr>
+        <td>Clear Cart</td>
+        <td>Clear cart</td>
+      </tr>
+      <tr>
+        <td>Open Cart</td>
+        <td>Open cart</td>
+      </tr>
+      <tr>
+        <td>Checkout</td>
+        <td>Checkout or Purchase items</td>
+      </tr>
+    </table>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="true">Close</button>
+  </mat-dialog-actions>
+</div>

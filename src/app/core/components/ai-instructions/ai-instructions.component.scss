@@ -1,0 +1,35 @@
+.nav {
+  background-image: linear-gradient(to right, #019fff, #3387ff);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+}
+
+h2 {
+  margin: 0;
+}
+
+.dialog-wrapper {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-dialog-actions {
+  margin-top: 1rem;
+  & button:focus {
+    outline: 0;
+  }
+}
+
+table {
+  font-size: 1rem;
+  width: 100%;
+}
+
+td,
+th {
+  padding-bottom: 12px;
+}
