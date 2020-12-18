@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
     MatDatepickerModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
   ],
 })
 export class AngularMaterialModule {}

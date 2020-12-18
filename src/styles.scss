@@ -27,3 +27,9 @@ nav {
   background-color: $primary-color !important;
   border-color: $primary-color !important;
 }
+
+.custom-modalbox {
+    mat-dialog-container {
+        padding: 0;
+    }
+}

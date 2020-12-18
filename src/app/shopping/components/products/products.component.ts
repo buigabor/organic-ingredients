@@ -23,15 +23,15 @@ export class ProductsComponent implements OnInit {
     private alanAiService: AlanAiService
   ) {}
 
-  async test() {
-    const cart = await this.cartService.getCart();
-    cart.subscribe((cart) => {
-      console.log(cart);
-      if (cart.items.length === 0) {
-        console.log('No items in cart you dummy');
-      }
-    });
-  }
+  // async test() {
+  //   const cart = await this.cartService.getCart();
+  //   cart.subscribe((cart) => {
+  //     console.log(cart);
+  //     if (cart.items.length === 0) {
+  //       console.log('No items in cart you dummy');
+  //     }
+  //   });
+  // }
 
   async ngOnInit() {
     this.cart$ = await this.cartService.getCart();

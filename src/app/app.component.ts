@@ -1,3 +1,4 @@
+import { AiInstructionsComponent } from './core/components/ai-instructions/ai-instructions.component';
 import { ShoppingCartService } from 'shared/services/shopping-cart/shopping-cart.service';
 import alanBtn from '@alan-ai/alan-sdk-web';
 import { Component, OnDestroy } from '@angular/core';
@@ -6,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { AlanAiService } from 'shared/services/alan-ai.service';
 import { AuthService } from 'shared/services/auth-service/auth.service';
 import { UserService } from 'shared/services/user-service/user.service';
+import { MatDialog } from '@angular/material/dialog';
 
 import * as env from '../../env.json';
 
@@ -25,7 +27,8 @@ export class AppComponent implements OnDestroy {
     private router: Router,
     private userService: UserService,
     private alanAiService: AlanAiService,
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    public dialog: MatDialog
   ) {
     this.authSub = this.authService.user$.subscribe((user) => {
       if (user) {
@@ -97,6 +100,14 @@ export class AppComponent implements OnDestroy {
           });
         }
       },
+    });
+  }
+
+  showDialog() {
+    const dialogRef = this.dialog.open(AiInstructionsComponent, {
+      width: '650px',
+      height: '360px',
+      panelClass: 'custom-modalbox',
     });
   }
 
