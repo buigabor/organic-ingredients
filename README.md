@@ -32,10 +32,10 @@ npm run start
 
 ## 🖥️ Technologies Used
 
-Frontend: TypeScript, HTML5, SASS, Angular
-Backend: Firebase
-Database: Firebase   
-Miscellaneous: Material UI, Bootstrap, Alan AI
+Frontend: TypeScript, HTML5, SASS, Angular.  
+Backend: Firebase.  
+Database: Firebase.  
+Miscellaneous: Material UI, Bootstrap, Alan AI.  
 
 ## Preview
 
