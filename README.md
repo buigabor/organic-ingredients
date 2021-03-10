@@ -4,7 +4,7 @@ An E-commerce application where you can buy organic ingredients with an inbuilt 
 
 ## ✨ Features
 
-- Catalogue for the organice ingredients 📖 
+- Catalogue for the organic ingredients 📖 
 - Shopping cart which stores the products in the cart even after refreshing the page 🛒
 - Filter products by categories 🤏
 - Checkout 🏁
