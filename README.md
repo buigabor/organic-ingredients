@@ -38,3 +38,7 @@ Database: Firebase
 Miscellaneous: Material UI, Bootstrap, Alan AI
 
 ## Preview
+
+<img src="./images/preview1.png">
+<img src="./images/preview2.png">
+<img src="./images/preview3.png">
