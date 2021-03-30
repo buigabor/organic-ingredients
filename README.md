@@ -35,7 +35,7 @@ npm run start
 Frontend: TypeScript, HTML5, SASS, Angular.  
 Backend: Firebase.  
 Database: Firebase.  
-Miscellaneous: Material UI, Bootstrap, Alan AI.  
+Miscellaneous: Angular Material, Bootstrap, Alan AI.  
 
 ## Preview
 
